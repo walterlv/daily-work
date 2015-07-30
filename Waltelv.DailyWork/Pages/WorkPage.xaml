@@ -26,7 +26,6 @@
         </Grid>
 
         <Grid Grid.Row="1">
-            <TextBlock Text="今天还没有写日志哦^_^" Foreground="LightGray" FontSize="40" FontWeight="Thin" HorizontalAlignment="Center" VerticalAlignment="Center"/>
             <views:WorkWeekView/>
         </Grid>
     </Grid>

@@ -3,10 +3,12 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
+using Waltelv.DailyWork.Pages;
 using Windows.ApplicationModel.Core;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
 using Windows.UI;
+using Windows.UI.Core;
 using Windows.UI.ViewManagement;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
@@ -22,9 +24,11 @@ namespace Waltelv.DailyWork
     {
         public MainPage()
         {
-            this.InitializeComponent();
+            InitializeComponent();
             Loading += OnLoading;
         }
+
+        private SystemNavigationManager _systemNavigator;
 
         private void OnLoading(FrameworkElement sender, object e)
         {
@@ -42,9 +46,26 @@ namespace Waltelv.DailyWork
             view.TitleBar.ButtonPressedBackgroundColor = accentDark;
             view.TitleBar.ButtonHoverForegroundColor = view.TitleBar.ButtonPressedForegroundColor = foreground;
 
-            CoreApplicationView coreView = CoreApplication.GetCurrentView();
-            coreView.TitleBar.ExtendViewIntoTitleBar = true;
-            Window.Current.SetTitleBar(TitleBarPanel);
+            _systemNavigator = SystemNavigationManager.GetForCurrentView();
+            _systemNavigator.BackRequested += SystemNavigationManager_BackRequested;
+
+            NavigationListBox.SelectedIndex = 0;
+        }
+
+        private void SystemNavigationManager_BackRequested(object sender, BackRequestedEventArgs e)
+        {
+            e.Handled = Frame.CanGoBack;
+            _systemNavigator.AppViewBackButtonVisibility = Frame.CanGoBack
+                ? AppViewBackButtonVisibility.Visible
+                : AppViewBackButtonVisibility.Collapsed;
+        }
+
+        private void NavigationListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (ContentFrame.Content == null)
+            {
+                ContentFrame.Navigate(typeof(WorkPage));
+            }
         }
     }
 }

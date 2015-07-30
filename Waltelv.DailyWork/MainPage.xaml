@@ -8,7 +8,6 @@
       mc:Ignorable="d">
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
         <Grid.RowDefinitions>
-            <RowDefinition Height="32"/>
             <RowDefinition Height="40"/>
             <RowDefinition/>
             <RowDefinition Height="40"/>
@@ -18,30 +17,13 @@
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
 
-        <Border Grid.Row="0" Grid.RowSpan="2" Grid.Column="0" Grid.ColumnSpan="2" Background="{StaticResource Theme.Brush.Accent}"/>
+        <Border Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Background="{StaticResource Theme.Brush.Accent}"/>
 
-        <Grid Grid.Row="1" Grid.RowSpan="3" Grid.Column="1">
-            <Frame>
-                <Frame.Content>
-                    <pages:WorkPage/>
-                </Frame.Content>
-            </Frame>
+        <Grid Grid.Row="0" Grid.RowSpan="3" Grid.Column="1">
+            <Frame x:Name="ContentFrame"/>
         </Grid>
 
         <Grid Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="40"/>
-                <ColumnDefinition/>
-            </Grid.ColumnDefinitions>
-            <Button Grid.Column="0" Content="&#xE0D5;" Foreground="{StaticResource Theme.Brush.AccentForeground}" Background="Transparent"
-                    Width="40" VerticalAlignment="Stretch" FontSize="16" Margin="0" Padding="0"
-                    UseSystemFocusVisuals="True" FontFamily="{ThemeResource SymbolThemeFontFamily}"/>
-            <Grid x:Name="TitleBarPanel" Grid.Column="1" Background="Transparent">
-                <TextBlock Text="Team Daily Work" Margin="12 0" FontSize="14" VerticalAlignment="Center" Foreground="{StaticResource Theme.Brush.AccentForeground}"/>
-            </Grid>
-        </Grid>
-
-        <Grid Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2">
             <StackPanel Orientation="Horizontal">
                 <ToggleButton x:Name="MenuButton" Content="&#xE700;" Foreground="{StaticResource Theme.Brush.AccentForeground}" Background="Transparent"
                               Width="40" VerticalAlignment="Stretch" FontSize="20" Margin="0" Padding="0"
@@ -50,8 +32,8 @@
             </StackPanel>
         </Grid>
 
-        <Grid Grid.Row="2" Grid.Column="0" Width="240">
-            <ListBox x:Name="NavigationListBox" SelectedIndex="0">
+        <Grid Grid.Row="1" Grid.Column="0" Width="240">
+            <ListBox x:Name="NavigationListBox" SelectionChanged="NavigationListBox_SelectionChanged">
                 <TextBlock Text="撰写日志"/>
                 <TextBlock Text="计划"/>
                 <TextBlock Text="统计和分析"/>
@@ -61,7 +43,7 @@
             </ListBox>
         </Grid>
 
-        <Border Grid.Row="3" Grid.Column="0" BorderThickness="0 1 0 0" BorderBrush="LightGray">
+        <Border Grid.Row="2" Grid.Column="0" BorderThickness="0 1 0 0" BorderBrush="LightGray">
             <Grid Background="{Binding Background, ElementName=NavigationListBox}">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="Auto"/>
