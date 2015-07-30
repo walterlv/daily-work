@@ -5,7 +5,7 @@
       xmlns:views="using:Waltelv.DailyWork.Views"
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-      mc:Ignorable="d">
+      mc:Ignorable="d" Margin="0 -40 0 0">
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
         <Grid.RowDefinitions>
@@ -14,13 +14,36 @@
         </Grid.RowDefinitions>
 
         <Grid Grid.Row="0" Background="{StaticResource Theme.Brush.Accent}">
-            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" RequestedTheme="Dark">
                 <Button Height="40" Background="Transparent">
-                    <SymbolIcon Symbol="CalendarDay" Foreground="{StaticResource Theme.Brush.AccentForeground}"/>
+                    <StackPanel Orientation="Horizontal">
+                        <SymbolIcon Symbol="Calendar"/>
+                        <TextBlock Text="按月显示" Margin="8 4"/>
+                    </StackPanel>
                 </Button>
-                <TextBox Width="240" Margin="4" HorizontalAlignment="Right" PlaceholderText="搜索"/>
                 <Button Height="40" Background="Transparent">
+                    <StackPanel Orientation="Horizontal">
+                        <SymbolIcon Symbol="CalendarWeek"/>
+                        <TextBlock Text="按周显示" Margin="8 4"/>
+                    </StackPanel>
+                </Button>
+                <Button Height="40" Background="Transparent">
+                    <StackPanel Orientation="Horizontal">
+                        <SymbolIcon Symbol="CalendarDay"/>
+                        <TextBlock Text="按天显示" Margin="8 4"/>
+                    </StackPanel>
+                </Button>
+                <AutoSuggestBox x:Name="SearchBox" QueryIcon="Find" PlaceholderText="搜索" Margin="4" Width="240" RequestedTheme="Light"
+                                TextChanged="SearchBox_TextChanged" QuerySubmitted="SearchBox_QuerySubmitted" SuggestionChosen="SearchBox_SuggestionChosen"/>
+                <Button Height="40" Background="Transparent" RequestedTheme="Light">
                     <SymbolIcon Symbol="More" Foreground="{StaticResource Theme.Brush.AccentForeground}"/>
+                    <Button.Flyout>
+                        <MenuFlyout>
+                            <MenuFlyoutItem Text="设置工作时间"/>
+                            <MenuFlyoutItem Text="设置工作类别"/>
+                            <MenuFlyoutItem Text="设置外观"/>
+                        </MenuFlyout>
+                    </Button.Flyout>
                 </Button>
             </StackPanel>
         </Grid>
@@ -28,5 +51,6 @@
         <Grid Grid.Row="1">
             <views:WorkWeekView/>
         </Grid>
+        
     </Grid>
 </Page>
