@@ -1,0 +1,50 @@
+﻿<UserControl x:Class="Waltelv.DailyWork.Views.WorkWeekView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:local="using:Waltelv.DailyWork.Views"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d" d:DesignWidth="400" d:DesignHeight="300">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+
+        <Grid Grid.Row="0" Grid.Column="0">
+
+        </Grid>
+
+        <Grid Grid.Row="0" Grid.Column="1">
+        </Grid>
+
+        <Grid Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2">
+            <ScrollViewer HorizontalScrollBarVisibility="Disabled">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="40"/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+                    <local:DayTimeView Grid.Column="0"/>
+                    <local:WorkDayView Grid.Column="1"/>
+                    <local:WorkDayView Grid.Column="2"/>
+                    <local:WorkDayView Grid.Column="3"/>
+                    <local:WorkDayView Grid.Column="4"/>
+                    <local:WorkDayView Grid.Column="5"/>
+                    <local:WorkDayView Grid.Column="6"/>
+                    <local:WorkDayView Grid.Column="7"/>
+                </Grid>
+            </ScrollViewer>
+        </Grid>
+    </Grid>
+</UserControl>

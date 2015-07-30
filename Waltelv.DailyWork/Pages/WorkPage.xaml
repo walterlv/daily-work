@@ -1,0 +1,33 @@
+﻿<Page x:Class="Waltelv.DailyWork.Pages.WorkPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:local="using:Waltelv.DailyWork.Pages"
+      xmlns:views="using:Waltelv.DailyWork.Views"
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+      mc:Ignorable="d">
+
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="40"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+
+        <Grid Grid.Row="0" Background="{StaticResource Theme.Brush.Accent}">
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                <Button Height="40" Background="Transparent">
+                    <SymbolIcon Symbol="CalendarDay" Foreground="{StaticResource Theme.Brush.AccentForeground}"/>
+                </Button>
+                <TextBox Width="240" Margin="4" HorizontalAlignment="Right" PlaceholderText="搜索"/>
+                <Button Height="40" Background="Transparent">
+                    <SymbolIcon Symbol="More" Foreground="{StaticResource Theme.Brush.AccentForeground}"/>
+                </Button>
+            </StackPanel>
+        </Grid>
+
+        <Grid Grid.Row="1">
+            <TextBlock Text="今天还没有写日志哦^_^" Foreground="LightGray" FontSize="40" FontWeight="Thin" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+            <views:WorkWeekView/>
+        </Grid>
+    </Grid>
+</Page>
